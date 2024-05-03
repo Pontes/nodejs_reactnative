@@ -2,10 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
 const path = require('path');
-const {DB_URI, PORT } = require('./config');
+const { DB_URI, PORT } = require('./config');
 
 const app = express();
-
 
 async function main(){
   await mongoose.connect(DB_URI, {
@@ -22,9 +21,6 @@ app.get('/', (req, res) =>{
 });
 app.use('/api/user', userRoutes);
 
-// app.get('/', (req, res) => {
-//   res.send('Servidor no Docker!!teste teste');
-// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
